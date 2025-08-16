@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://l6m8civpo8ai"]
+
+[ext_resource type="PackedScene" uid="uid://clrrfhn6kk532" path="res://Scenes/player.tscn" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://di3bpu0vc3it8" path="res://Scenes/main.gd" id="1_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://cl3wlp2dax61b" path="res://Scenes/TileMap.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://b4j6nfpm3jvax" path="res://Scenes/health.tscn" id="3_8gbba"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_jjvhh")
+
+[node name="Player" parent="." instance=ExtResource("1_bo1nx")]
+position = Vector2(656, 480)
+
+[node name="PurpTile" parent="." instance=ExtResource("2_8gbba")]
+position = Vector2(0, 512)
+
+[node name="PurpTile2" parent="." instance=ExtResource("2_8gbba")]
+position = Vector2(512, 512)
+
+[node name="PurpTile3" parent="." instance=ExtResource("2_8gbba")]
+position = Vector2(1024, 512)
+
+[node name="healna" parent="." instance=ExtResource("3_8gbba")]
+
+[node name="HealnaTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="HealnaTimer" to="." method="_on_healna_timer_timeout"]
