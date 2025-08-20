@@ -9,6 +9,7 @@ var hp := max_hp
 
 func _ready():
 	# health signal with hp int param
+	# when we call the set_hp it will make a call to the signal
 	player.health_changed.connect(health_bar.set_hp)  # wire player -> UI
 	
 	health_bar.set_hp(player.hp)
