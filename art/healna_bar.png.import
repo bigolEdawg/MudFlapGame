@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c638f7rwsx3wn"
-path="res://.godot/imported/healna_bar_empty.png-0a5134e682d232b1ac577d3b4248a7bc.ctex"
+uid="uid://cjfbht8m5iv7k"
+path="res://.godot/imported/healna_bar.png-87b9466ade081fab7a6a28d33a646799.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://healna_bar_empty.png"
-dest_files=["res://.godot/imported/healna_bar_empty.png-0a5134e682d232b1ac577d3b4248a7bc.ctex"]
+source_file="res://art/healna_bar.png"
+dest_files=["res://.godot/imported/healna_bar.png-87b9466ade081fab7a6a28d33a646799.ctex"]
 
 [params]
 

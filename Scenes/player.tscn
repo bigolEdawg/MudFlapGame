@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://clrrfhn6kk532"]
 
-[ext_resource type="Script" uid="uid://c313pk2k2ysbf" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://c313pk2k2ysbf" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://cehb5776exhqg" path="res://art/mudflap_v1.png" id="2_onrkg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qujof"]

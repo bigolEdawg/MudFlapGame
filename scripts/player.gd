@@ -16,7 +16,7 @@ var hp := max_hp
 
 
 const RUN_ACCEL = 100
-const TURN_ACCEL = 4800
+const TURN_ACCEL = 800
 const FRICTION = 600.0
 var VELOCITY = Vector2.ZERO
 const AIR_DRAG = 10.0

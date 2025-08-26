@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=4 uid="uid://cl3wlp2dax61b"]
 
-[ext_resource type="TileSet" uid="uid://clhs8f602amu8" path="res://new_tile_set.tres" id="1_f0hoy"]
+[ext_resource type="TileSet" uid="uid://clhs8f602amu8" path="res://Scenes/new_tile_set.tres" id="1_f0hoy"]
 
 [node name="PurpTile" type="Node2D"]
 
