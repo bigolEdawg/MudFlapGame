@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4j6nfpm3jvax"]
 
-[ext_resource type="Texture2D" uid="uid://cjfbht8m5iv7k" path="res://art/healna_bar.png" id="1_aswr4"]
-[ext_resource type="Texture2D" uid="uid://c638f7rwsx3wn" path="res://art/healna_bar_empty.png" id="2_s36ud"]
+[ext_resource type="Texture2D" uid="uid://cchm1tsor5krt" path="res://art/healna2_empty.png" id="1_s36ud"]
+[ext_resource type="Texture2D" uid="uid://c2r3dsdajn42q" path="res://art/healna2.png" id="2_jb86c"]
 [ext_resource type="Script" uid="uid://cu6rpww4dl5me" path="res://Scenes/texture_progress_bar.gd" id="3_s36ud"]
 
 [node name="healna" type="Node2D"]
@@ -10,6 +10,6 @@
 texture_filter = 1
 offset_right = 40.0
 offset_bottom = 40.0
-texture_under = ExtResource("2_s36ud")
-texture_progress = ExtResource("1_aswr4")
+texture_under = ExtResource("1_s36ud")
+texture_progress = ExtResource("2_jb86c")
 script = ExtResource("3_s36ud")
