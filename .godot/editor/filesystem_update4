@@ -1,0 +1,7 @@
+res://Scenes/player.tscn
+res://Scenes/new_tile_set.tres
+res://Scenes/main.tscn
+res://Scenes/health.tscn
+res://Scenes/enemy.tscn
+res://scripts/player.gd
+res://scripts/old_player.gd

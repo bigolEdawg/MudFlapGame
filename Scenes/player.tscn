@@ -1,22 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://clrrfhn6kk532"]
+[gd_scene load_steps=9 format=3 uid="uid://clrrfhn6kk532"]
 
 [ext_resource type="Script" uid="uid://c313pk2k2ysbf" path="res://scripts/player.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://cehb5776exhqg" path="res://art/mudflap_v1.png" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://cshp87abwear0" path="res://art/idle1.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://cofw1pagyewne" path="res://art/idle2.png" id="3_vgqql"]
+[ext_resource type="Texture2D" uid="uid://d15scmkfh7jkf" path="res://art/punch1.png" id="4_fkybt"]
+[ext_resource type="Texture2D" uid="uid://cy4bp8uagpega" path="res://art/punch2.png" id="5_x3wgy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qujof"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_onrkg")
+"texture": ExtResource("2_6t5aa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vgqql")
 }],
 "loop": true,
-"name": &"new_animation",
-"speed": 5.0
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fkybt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x3wgy")
+}],
+"loop": true,
+"name": &"punch",
+"speed": 4.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_22xei"]
 radius = 11.0
 height = 60.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
+size = Vector2(19.5, 10)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_onrkg")
@@ -25,7 +45,9 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_qujof")
-animation = &"new_animation"
+animation = &"punch"
+frame = 1
+frame_progress = 0.669109
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -33,3 +55,12 @@ shape = SubResource("CapsuleShape2D_22xei")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 30)
+
+[node name="PunchHitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PunchHitBox"]
+position = Vector2(21, -11)
+shape = SubResource("RectangleShape2D_vgqql")
+disabled = true
+
+[connection signal="body_entered" from="PunchHitBox" to="." method="_on_punch_hit_box_body_entered"]
