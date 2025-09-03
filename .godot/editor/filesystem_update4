@@ -5,3 +5,4 @@ res://Scenes/health.tscn
 res://Scenes/enemy.tscn
 res://scripts/player.gd
 res://scripts/old_player.gd
+res://scripts/enemy.gd

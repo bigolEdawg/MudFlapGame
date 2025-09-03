@@ -26,7 +26,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_x3wgy")
 }],
-"loop": true,
+"loop": false,
 "name": &"punch",
 "speed": 4.0
 }]
@@ -47,7 +47,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_qujof")
 animation = &"punch"
 frame = 1
-frame_progress = 0.669109
+frame_progress = 0.664231
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

@@ -23,16 +23,26 @@ const JUMP_CUT = 0.5
 const GRAVITY = 300
 const SKIN := 1.0  # pixels
 
+var attacking := false
+var anim_buffer := 0.05
+var queued_attack = false
 
 func _physics_process(delta: float) -> void:
-	if velocity.x == 0 and velocity.y == 0:
-		player.play("idle")
-	else:
-		player.stop()
 	
 	if Input.is_action_just_pressed("punch"):
-		_start_punch()
-	
+		if not attacking:
+			_start_punch()
+		else:
+			# if we pressed punched but we're in the middle of the punch we just want to queue up the next one
+			queued_attack = true
+
+	if not attacking:
+		if velocity.x == 0 and velocity.y == 0:
+			if player.animation != "idle":
+				player.play("idle")
+		else:
+			#player.stop()
+			pass
 	# vertical movement
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
@@ -74,9 +84,17 @@ func _ready() -> void:
 	punch_shape.disabled = true
 
 func _start_punch():
+	# set attacking to true
+	attacking = true
 	player.play("punch")
 	await player.animation_finished
 	punch_shape.disabled = true
+
+	if queued_attack:
+		queued_attack = false
+		_start_punch()
+	else:
+		attacking = false
 
 
 func change_hp(delta_hp: int) -> void:

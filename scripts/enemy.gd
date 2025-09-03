@@ -13,15 +13,21 @@ extends CharacterBody2D
 
 var aggro := false
 func _ready() -> void:
-	detect.body_entered.connect(_on_area_2d_body_entered)
-	detect.body_exited.connect(_on_area_2d_body_exited)
+	# I can remove this because they are connected together
+	#detect.body_entered.connect(_on_area_2d_body_entered)
+	#detect.body_exited.connect(_on_area_2d_body_exited)
 	#set_physics_process(false)
-
+	pass
+	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == player or body.is_in_group("player"):
 		aggro = true
 		print("aggro on")
-	
+	#E 0:00:01:342   enemy.gd:17 @ _ready(): Signal 'body_exited' is already connected to given callable 'CharacterBody2D(enemy.gd)::_on_area_2d_body_exited' in that object.
+  #<C++ Error>   Method/function failed. Returning: ERR_INVALID_PARAMETER
+  #<C++ Source>  core/object/object.cpp:1451 @ connect()
+  #<Stack Trace> enemy.gd:17 @ _ready()
+
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
