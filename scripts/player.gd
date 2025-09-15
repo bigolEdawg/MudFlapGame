@@ -27,11 +27,16 @@ var attacking := false
 var anim_buffer := 0.05
 var queued_attack = false
 
+var punch_damage := 10.0
+
+
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("punch"):
 		if not attacking:
+			change_hp(-10)
 			_start_punch()
+			
 		else:
 			# if we pressed punched but we're in the middle of the punch we just want to queue up the next one
 			queued_attack = true
@@ -111,8 +116,30 @@ func _on_frame_changed_():
 		punch_shape.disabled = true
 
 
-
+# Detect when the players punch hit box is entered
 func _on_punch_hit_box_body_entered(body: Node2D) -> void:
 	if not punch_shape.disabled and body.is_in_group("enemy"):
-		print("punching!")
-		#body.take_damage(1)
+		body.take_damage(punch_damage)
+		print("punch hit box")
+		# take away helna
+		pass
+# implement damage to player
+"""
+if the players collision shape is entered 
+then take corresponding damage from that enemey
+
+1. create a area2d and add a collision
+2. check if the entered entity is from the enemy group
+3. if from the enemy group we will get the damage int
+4. add the damage int to the healna value
+"""
+
+
+
+func _on_player_hit_box_body_entered(body: Node2D) -> void:
+	print("player hit box")
+	if body.is_in_group("enemy"):
+		print("enemy group")
+		# get the enemey damage variable
+		print(body.damage_to_player)
+		change_hp(body.damage_to_player)

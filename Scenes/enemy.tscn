@@ -1,10 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6tim4wc3wsx6"]
+[gd_scene load_steps=11 format=3 uid="uid://c6tim4wc3wsx6"]
 
 [ext_resource type="Script" uid="uid://baglpmapdtho3" path="res://scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://cehb5776exhqg" path="res://art/mudflap_v1.png" id="1_hghv2"]
+[ext_resource type="Texture2D" uid="uid://cuxxxt5e553fi" path="res://art/death1.png" id="2_1dp5w"]
+[ext_resource type="Texture2D" uid="uid://egp50fb32elx" path="res://art/death2.png" id="3_auwsv"]
+[ext_resource type="Texture2D" uid="uid://6sgbo6ukjjyc" path="res://art/death3.png" id="4_8uf12"]
+[ext_resource type="Texture2D" uid="uid://jgb1emomoole" path="res://art/death4.png" id="5_po0sg"]
+[ext_resource type="Texture2D" uid="uid://k4rn8mq11udh" path="res://art/death5.png" id="6_haro7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1f0kj"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1dp5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_auwsv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8uf12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_po0sg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_haro7")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_hghv2")
@@ -24,16 +49,20 @@ size = Vector2(540, 120)
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_1f0kj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["enemy"]]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1f0kj")
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_afpow")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(0, -28)
 shape = SubResource("RectangleShape2D_1f0kj")
 

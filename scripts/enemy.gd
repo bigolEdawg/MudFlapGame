@@ -11,6 +11,19 @@ extends CharacterBody2D
 # get a reference to the collision
 @onready var detect: Area2D = $Area2D
 
+@export var damage_to_player : = -10
+
+"""
+Starting hp for the enemy
+- eventually want to make this a generic node so i can make
+several enemoies meaning that i want to pass in a hp for the specific enemy 
+and not have it all be set to 10
+"""
+
+var max_hp = 10.0
+var hp = max_hp
+
+
 var aggro := false
 func _ready() -> void:
 	# I can remove this because they are connected together
@@ -74,3 +87,20 @@ func _physics_process(delta: float) -> void:
 
 		if dir != 0.0:
 			$AnimatedSprite2D.flip_h = dir < 0.0
+
+# adds damage to the enemy
+func take_damage(damage : float):
+	# subtract thge damage from the hp and set the new hp
+	hp = clamp(hp - damage, 0,max_hp)
+	# check if the hp is at 0
+	if hp == 0:
+		print("taking damage")
+		# play death animation
+		$AnimatedSprite2D.play("death")
+		await $AnimatedSprite2D.animation_finished
+		
+		queue_free()
+	# if hp at 0
+	# despawn the enemy
+	# spawn in the loot
+	

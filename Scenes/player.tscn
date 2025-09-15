@@ -45,12 +45,9 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_qujof")
-animation = &"punch"
-frame = 1
-frame_progress = 0.664231
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_22xei")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -63,4 +60,10 @@ position = Vector2(21, -11)
 shape = SubResource("RectangleShape2D_vgqql")
 disabled = true
 
+[node name="PlayerHitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
+shape = SubResource("CapsuleShape2D_22xei")
+
 [connection signal="body_entered" from="PunchHitBox" to="." method="_on_punch_hit_box_body_entered"]
+[connection signal="body_entered" from="PlayerHitBox" to="." method="_on_player_hit_box_body_entered"]
